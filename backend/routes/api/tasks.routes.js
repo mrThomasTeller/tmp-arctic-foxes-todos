@@ -1,10 +1,5 @@
-const ReactDOMServer = require('react-dom/server');
-const React = require('react');
 const taskRouter = require('express').Router();
-const { Op } = require('sequelize');
 const { Task } = require('../../db/models');
-const TasksList = require('../../views/TasksList');
-const TaskView = require('../../views/Task');
 
 taskRouter.get('/', async (req, res) => {
   try {
