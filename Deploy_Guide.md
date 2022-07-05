@@ -36,3 +36,16 @@ app.get('*', (req, res) => {
 "postinstall": "cd backend && npm i && npx sequelize db:migrate && cd ../frontend && npm i && npm run build",
 "start": "cd backend && npm start",
 ```
+
+10. Зайти на heroku, создать приложение
+11. Подключить postgres к heroku (Resource -> postgress add-on)
+12. Идём в Deploy, коннектим github-репозиторий, разрешаем автоматические билды (Enable Automatic Deploys), делаем билд вручную (Deploy Brunch)
+13. Установить heroku-cli (https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
+14. Пройти аутентификацию heroku-cli (`heroku auth:2fa` во командной строке)
+15. Засеять БД (<app-name> - имя вашего приложения на heroku). Используй такой синтаксис если тебе понадобиться запускать команды в командной строке на сервере heroku.
+
+```
+heroku run "cd backend && npx sequelize db:seed:all" -a <app-name>
+```
+
+16. Готово! Теперь каждый раз после пуша в выбранную ветку деплой будет происходить автоматически.
